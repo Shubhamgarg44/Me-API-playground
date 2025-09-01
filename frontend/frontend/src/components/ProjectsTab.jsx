@@ -10,19 +10,21 @@ export default function ProjectsTab({ profile }) {
   const [editing, setEditing] = useState(null);
   const [editForm, setEditForm] = useState({ title: "", description: "", github: "", demo: "" });
 
+  const API = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
-    axios.get("/api/projects").then(res => setProjects(res.data));
+    axios.get(`${API}/projects`).then(res => setProjects(res.data));
   }, []);
 
   const searchProjects = async () => {
-    const res = await axios.get(`/api/projects?q=${search}`);
+    const res = await axios.get(`${API}/projects?q=${search}`);
     setProjects(res.data);
   };
 
   const addProject = async () => {
     if (!newProject.title) return;
     try {
-      const res = await axios.post("/api/projects", {
+      const res = await axios.post(`${API}/projects`, {
         title: newProject.title,
         description: newProject.description,
         skills: [],
@@ -36,7 +38,7 @@ export default function ProjectsTab({ profile }) {
   };
 
   const deleteProject = async (id) => {
-    await axios.delete(`/api/projects/${id}`);
+    await axios.delete(`${API}/projects/${id}`);
     setProjects(projects.filter(p => p._id !== id));
   };
 
@@ -51,7 +53,7 @@ export default function ProjectsTab({ profile }) {
   };
 
   const saveEdit = async () => {
-    const res = await axios.put(`/api/projects/${editing._id}`, {
+    const res = await axios.put(`${API}/projects/${editing._id}`, {
       title: editForm.title,
       description: editForm.description,
       links: { github: editForm.github, demo: editForm.demo }

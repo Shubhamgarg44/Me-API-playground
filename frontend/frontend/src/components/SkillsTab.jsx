@@ -9,15 +9,17 @@ export default function SkillsTab({ profile }) {
   const [editing, setEditing] = useState(null);
   const [editForm, setEditForm] = useState({ name: "", level: 50 });
 
+  const API = import.meta.env.VITE_API_URL;
+
   // fetch skills on mount
   useEffect(() => {
-    axios.get("/api/skills").then(res => setSkills(res.data));
+    axios.get(`${API}/skills`).then(res => setSkills(res.data));
   }, []);
 
   const addSkill = async () => {
     if (!newSkill.name) return;
     try {
-      const res = await axios.post("/api/skills", newSkill);
+      const res = await axios.post(`${API}/skills`, newSkill);
       setSkills([...skills, res.data]);
       setNewSkill({ name: "", level: 50 });
     } catch (err) {
@@ -26,7 +28,7 @@ export default function SkillsTab({ profile }) {
   };
 
   const deleteSkill = async (id) => {
-    await axios.delete(`/api/skills/${id}`);
+    await axios.delete(`${API}/skills/${id}`);
     setSkills(skills.filter(s => s._id !== id));
   };
 
@@ -36,7 +38,7 @@ export default function SkillsTab({ profile }) {
   };
 
   const saveEdit = async () => {
-    const res = await axios.put(`/api/skills/${editing._id}`, editForm);
+    const res = await axios.put(`${API}/skills/${editing._id}`, editForm);
     setSkills(skills.map(s => (s._id === editing._id ? res.data : s)));
     setEditing(null);
   };

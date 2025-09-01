@@ -16,11 +16,13 @@ export default function ProfileTab({ profile, setProfile }) {
     portfolio: profile?.links?.portfolio || ""
   });
 
+  const API = import.meta.env.VITE_API_URL;
+
   // Create profile
   const createProfile = async () => {
     try {
       console.log("📤 Creating profile with:", form);
-      const res = await axios.post("/api/profile", {
+      const res = await axios.post(`${API}/profile`, {
         name: form.name,
         email: form.email,
         education: form.education,
@@ -41,7 +43,7 @@ export default function ProfileTab({ profile, setProfile }) {
   const saveEdit = async () => {
     try {
       console.log("📤 Updating profile with:", form);
-      const res = await axios.put("/api/profile", {
+      const res = await axios.put(`${API}/profile`, {
         name: form.name,
         email: form.email,
         education: form.education,
@@ -61,7 +63,7 @@ export default function ProfileTab({ profile, setProfile }) {
   // Delete profile
   const deleteProfile = async () => {
     try {
-      await axios.delete("/api/profile");
+      await axios.delete(`${API}/profile`);
       setProfile(null);
       window.location.reload(); // also clears skills/projects cascade
     } catch (err) {

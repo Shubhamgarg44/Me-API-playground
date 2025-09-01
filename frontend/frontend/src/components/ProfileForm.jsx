@@ -31,11 +31,13 @@ export default function ProfileForm({ onProfileCreated, existing, onCancel }) {
       },
     };
 
+    const API = import.meta.env.VITE_API_URL;
+
     let res;
     if (existing?._id) {
-      res = await axios.put("/api/profile", payload);
+      res = await axios.put(`${API}/profile`, payload);
     } else {
-      res = await axios.post("/api/profile", payload);
+      res = await axios.post(`${API}/profile`, payload);
     }
     onProfileCreated(res.data);
   };

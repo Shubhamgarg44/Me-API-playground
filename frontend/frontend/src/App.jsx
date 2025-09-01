@@ -8,10 +8,11 @@ import ProjectsTab from "./components/ProjectsTab";
 export default function App() {
   const [tab, setTab] = useState("profile");
   const [profile, setProfile] = useState(null);
+  const API = import.meta.env.VITE_API_URL;
   
   // fetch profile once
   useEffect(() => {
-    axios.get("/api/profile").then(res => setProfile(res.data));
+    axios.get(`${API}/profile`).then(res => setProfile(res.data));
   }, []);
 
   return (
