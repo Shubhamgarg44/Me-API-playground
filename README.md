@@ -1,140 +1,159 @@
-# Me-API Playground 🚀
+# 🚀 Me-API Playground
 
-A full-stack MERN playground that stores and exposes my profile information via a clean API, with a minimal but interactive frontend.
+A full-stack **MERN** playground to manage and showcase your developer profile via a clean API and minimal, interactive frontend.
+
+---
 
 ## 🌟 Features
-- **Profile Management**: Create, view, edit, delete profile with name, email, education, and links (GitHub, LinkedIn, Portfolio).
-- **Projects**: Add, search, edit, delete projects with title, description, skills, and links.
-- **Skills**: Add, edit, delete skills with proficiency level and progress bar UI.
-- **Search & Query Support**:
-  - `/projects?q=react`
-  - `/skills/top`
-  - `/health` endpoint for liveness.
-- **Interactive UI**: Built with React + Vite + Tailwind + Framer Motion for animations.
-- **CRUD Support**: All entities (profile, skills, projects) are fully editable.
+
+- **Profile Management:**  
+  Create, view, edit, and delete your profile (name, email, education, plus GitHub, LinkedIn, and Portfolio links).
+
+- **Projects:**  
+  Add, search, edit, and delete projects with title, description, skills, and demo/source links.
+
+- **Skills:**  
+  Add, edit, and delete skills. Includes proficiency level & progress bar UI.
+
+- **Search & Query Support:**  
+  - `GET /projects?q=react` (search projects by keyword)  
+  - `GET /skills/top` (get top skills)  
+  - `GET /health` (liveness/health check endpoint)
+
+- **Interactive UI:**  
+  React + Vite + TailwindCSS + Framer Motion for snappy, animated UX.
+
+- **Full CRUD:**  
+  All entities (profile, skills, projects) are editable.
 
 ---
 
 ## 🏗️ Tech Stack
-- **Frontend**: React, Vite, TailwindCSS, Framer Motion
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB Atlas (Mongoose ODM)
-- **Hosting**:  
-  - Frontend → [Vercel](https://me-api-playground-pcj54muf2-shubhamgarg44s-projects.vercel.app/)  
-  - Backend → [Render](https://me-api-playground-1rzw.onrender.com)  
+
+- **Frontend:** React, Vite, TailwindCSS, Framer Motion  
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB Atlas (via Mongoose)
+- **Hosting:**  
+  - Frontend: [Vercel](https://me-api-playground-pcj54muf2-shubhamgarg44s-projects.vercel.app/)  
+  - Backend: [Render](https://me-api-playground-1rzw.onrender.com)  
 
 ---
 
-## 📂 Architecture
-\/backend
-├── models/ # Mongoose schemas
-├── routes/ # Express routes
-├── server.js # Entry point
+## 📂 Project Structure
+
+```
+/backend
+  ├── models/        # Mongoose schemas
+  ├── routes/        # Express routes
+  └── server.js      # Entry point
+
 /frontend
-├── src/components/ # UI components
-├── src/App.jsx # Main frontend
-
-
+  ├── src/components/  # UI components
+  └── src/App.jsx      # Main frontend
+```
 
 ---
 
 ## ⚙️ Setup Instructions
 
 ### 🔹 Local Development
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/Shubhamgarg44/Me-API-playground.git
-   cd Me-API-playground
 
-   Setup backend:
+1. **Clone the repo:**
 
-cd backend
-npm install
-npm run dev
+    ```bash
+    git clone https://github.com/Shubhamgarg44/Me-API-playground.git
+    cd Me-API-playground
+    ```
 
+2. **Backend Setup:**
 
-Add a .env file:
+    ```bash
+    cd backend
+    npm install
+    npm run dev
+    ```
 
-MONGO_URI=your-mongodb-uri
-PORT=4000
+    - Add a `.env` file in `/backend`:
+      ```
+      MONGO_URI=your-mongodb-uri
+      PORT=4000
+      ```
 
+3. **Frontend Setup:**
 
-Setup frontend:
+    ```bash
+    cd ../frontend
+    npm install
+    npm run dev
+    ```
 
-cd ../frontend
-npm install
-npm run dev
+    - Add a `.env` file in `/frontend`:
+      ```
+      VITE_API_URL=http://localhost:4000
+      ```
 
+4. **Open in browser:**
 
-Add a .env file:
+    - Backend: [http://localhost:4000](http://localhost:4000)
+    - Frontend: [http://localhost:5173](http://localhost:5173)
 
-VITE_API_URL=http://localhost:4000
+---
 
+### 🔹 Production
 
-Open:
+- **Frontend:** [Vercel Live](https://me-api-playground-pcj54muf2-shubhamgarg44s-projects.vercel.app/)
+- **Backend:** [Render Live](https://me-api-playground-1rzw.onrender.com)
+- **Health Check:** `/health` endpoint
 
-Backend → http://localhost:4000
+---
 
-Frontend → http://localhost:5173
+## 📖 API Documentation
 
-🔹 Production (Live Links)
+### Profile
 
-Frontend: Vercel Link
+- `GET    /profile`         — Get profile
+- `POST   /profile`         — Create profile
+- `PUT    /profile/:id`     — Update profile
+- `DELETE /profile/:id`     — Delete profile
 
-Backend: Render Link
+### Skills
 
-Health Check: Health Endpoint
+- `GET    /skills`          — List skills
+- `POST   /skills`          — Add skill
+- `PUT    /skills/:id`      — Update skill
+- `DELETE /skills/:id`      — Delete skill
+- `GET    /skills/top`      — Get top skills
 
-📖 API Documentation
-Profile
+### Projects
 
-GET /profile
+- `GET    /projects`        — List projects
+- `GET    /projects?q=term` — Search projects
+- `POST   /projects`        — Add project
+- `PUT    /projects/:id`    — Update project
+- `DELETE /projects/:id`    — Delete project
 
-POST /profile
+### Health
 
-PUT /profile/:id
+- `GET    /health`          — Returns `{ message: "ok" }`
 
-DELETE /profile/:id
+---
 
-Skills
+## 🛑 Known Limitations
 
-GET /skills
+- **No authentication or rate limiting** (nice-to-have).
+- **Single profile** supported (multi-user is not implemented).
+- Assumes MongoDB Atlas for DB connection.
 
-POST /skills
+---
 
-PUT /skills/:id
+## 📄 Resume
 
-DELETE /skills/:id
+[View my resume (Google Drive)](https://drive.google.com/file/d/10OG3ftHdGZhaljZ-gT23KUwZHdCMWD95/view?usp=sharing)
 
-GET /skills/top
+---
 
-Projects
+## 🔗 Live Playground
 
-GET /projects
+👉 [me-api-playground-pcj54muf2-shubhamgarg44s-projects.vercel.app/](https://me-api-playground-pcj54muf2-shubhamgarg44s-projects.vercel.app/)
 
-GET /projects?q=keyword
-
-POST /projects
-
-PUT /projects/:id
-
-DELETE /projects/:id
-
-Health
-
-GET /health → returns { message: "ok" }
-
-Known Limitations
-
-No authentication or rate limiting (nice-to-have).
-
-Currently only supports single profile.
-
-Database connection assumes MongoDB Atlas.
-
-
-📄 Resume
-https://drive.google.com/file/d/10OG3ftHdGZhaljZ-gT23KUwZHdCMWD95/view?usp=sharing
-
-## LINK
-https://me-api-playground-pcj54muf2-shubhamgarg44s-projects.vercel.app/
+---
