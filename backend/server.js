@@ -7,15 +7,15 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json())
+// health check 
+app.get("/health", (req,res) =>{
+    res.status(200).json({message:"ok"});
+});
 
 app.use(cors({
     origin: "http://localhost:5173"
   }));
 
-// health check 
-app.get("/health", (req,res) =>{
-    res.status(200).json({message:"ok"});
-});
 
 // Routes
 import profileRoutes from "./routes/profile.js";
