@@ -25,9 +25,9 @@ import profileRoutes from "./routes/profile.js";
 import projectRoutes from "./routes/project.js";
 import skillRoutes from "./routes/skill.js";
 
-app.use("/api/profile", profileRoutes);
-app.use("/api/projects", projectRoutes);
-app.use("/api/skills", skillRoutes);
+app.use("/profile", profileRoutes);
+app.use("/projects", projectRoutes);
+app.use("/skills", skillRoutes);
 
 
 const PORT = process.env.PORT || 4000;   // ✅ dynamic for Render
