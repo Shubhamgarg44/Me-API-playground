@@ -13,9 +13,12 @@ app.get("/health", (req,res) =>{
 });
 
 app.use(cors({
-    origin: "http://localhost:5173"
+    origin: [
+      "http://localhost:5173", 
+      "https://me-api-playground-pcj54muf2-shubhamgarg44s-projects.vercel.app"
+    ],
+    credentials: true,
   }));
-
 
 // Routes
 import profileRoutes from "./routes/profile.js";
