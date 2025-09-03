@@ -24,7 +24,7 @@ export default function App() {
         {/* Sidebar (unchanged) */}
         <aside className="w-64 bg-black/40 backdrop-blur-lg border-r border-purple-500/30 p-6 flex flex-col justify-between">
           <div>
-            <h1 className="text-2xl font-bold mb-10 tracking-wide">🚀 Shubham Garg</h1>
+            <h1 className="text-2xl font-bold mb-10 tracking-wide">👤 Shubham Garg</h1>
             <nav className="space-y-4">
               <button onClick={() => setTab("profile")}
                 className={`block w-full text-left px-3 py-2 rounded-lg transition ${tab === "profile" ? "bg-purple-600/70" : "hover:bg-purple-500/20"}`}>
@@ -40,7 +40,7 @@ export default function App() {
               </button>
             </nav>
           </div>
-          <p className="text-sm text-gray-400">Made with ❤️ using MERN</p>
+          <p className="text-sm text-gray-400"></p>
         </aside>
 
         {/* Main Content + Header */}
